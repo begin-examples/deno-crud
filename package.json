@@ -1,0 +1,18 @@
+{
+  "name": "begin-app",
+  "version": "0.0.0",
+  "description": "Begin basic TKTK app",
+  "scripts": {
+    "lint": "eslint src --ignore-pattern node_modules --fix",
+    "start": "cross-env NODE_ENV=testing npx sandbox",
+    "test": "cross-env NODE_ENV=testing PORT=6666 tape test/*-test.js ./test/**/*-test.js | tap-spec"
+  },
+  "devDependencies": {
+    "@architect/sandbox": "latest",
+    "@begin/data": "latest",
+    "cross-env": "^7.0.2",
+    "tap-spec": "^5.0.0",
+    "tape": "^5.0.1",
+    "tiny-json-http": "^7.2.0"
+  }
+}
