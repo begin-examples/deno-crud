@@ -5,3 +5,18 @@ updates:
   schedule:
     interval: daily
   open-pull-requests-limit: 99
+- package-ecosystem: npm
+  directory: "/src/http/get-todos/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 99
+- package-ecosystem: npm
+  directory: "/src/http/post-todos-delete/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 99
+- package-ecosystem: npm
+  directory: "/src/http/post-todos/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 99
