@@ -1,6 +1,6 @@
 import * as data from 'https://registry.begin.com/begin-data@master/mod.ts'
 
-export default async function todos(req) {
+export async function handler(req) {
   let todos = await data.get({
     table: 'todos'
   })

@@ -1,6 +1,7 @@
 import * as data from 'https://registry.begin.com/begin-data@master/mod.ts'
 
-export default async function create(req) {
+export async function handler(req) {
+  let todo = Object.fromEntries(new URLSearchParams(atob(req.body)))
   todo.created = todo.created || Date.now()
   todo.completed = !!todo.completed
   await data.set({

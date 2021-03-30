@@ -1,7 +1,7 @@
 /* global Deno */
 import * as data from 'https://registry.begin.com/begin-data@master/mod.ts'
 
-export default async function destroy(req) {
+export async function handler(req) {
   let searchParams = new URLSearchParams(req.body)
   let key = searchParams.get('key')
   await data.destroy({
