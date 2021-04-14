@@ -1,17 +1,16 @@
-/* global Deno */
 import * as data from 'https://registry.begin.com/begin-data@master/mod.ts'
 
 export async function handler(req) {
-  let searchParams = new URLSearchParams(req.body)
-  let key = searchParams.get('key')
-  await data.destroy({
+  let todo = Object.fromEntries(new URLSearchParams(atob(req.body)))
+  todo.created = todo.created || Date.now()
+  await data.set({
     table: 'todos',
-    key
+    ...todo
   })
   return {
     statusCode: 302,
     headers: {
-      'location': '/',
+      location: '/',
       'cache-control': 'no-cache, no-store, must-revalidate, max-age=0, s-maxage=0'
     }
   }
