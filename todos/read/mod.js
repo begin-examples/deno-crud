@@ -1,11 +1,17 @@
 import * as data from 'https://registry.begin.com/begin-data@master/mod.ts'
 
-export default async function todos(req) {
-  let todos = await data.get({
-    table: 'todos'
+export async function handler(req) {
+  let pages = await data.get({
+    table: 'todos',
+    limit: 25
   })
-  // Return oldest todo first
-  todos.sort((a, b) => a.created > b.created)
+
+  let todos = []
+  for await (let todo of pages) {
+    todos.push(todo)
+  }
+
+  todos.sort((a, b) => a.created - b.created)
 
   return {
     statusCode: 201,
@@ -13,8 +19,6 @@ export default async function todos(req) {
       'content-type': 'application/json; charset=utf8',
       'cache-control': 'no-cache, no-store, must-revalidate, max-age=0, s-maxage=0'
     },
-    body: JSON.stringify({
-      todos
-    })
+    body: JSON.stringify(todos)
   }
 }

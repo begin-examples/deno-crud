@@ -2,9 +2,21 @@
 begin-app
 
 @http
-get /todos
-post /todos
-post /todos/delete
+/todos
+  method get
+  src /todos/read/
+
+/todos
+  method post
+  src /todos/create
+
+/todos/delete
+  method post
+  src /todos/delete
+
+/todos/:id
+  method post
+  src /todos/update
 
 @tables
 data

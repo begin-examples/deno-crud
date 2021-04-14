@@ -1,7 +1,7 @@
 import * as data from 'https://registry.begin.com/begin-data@master/mod.ts'
 
-export default async function create(req) {
-  todo.created = todo.created || Date.now()
+export async function handler(req) {
+  let todo = Object.fromEntries(new URLSearchParams(atob(req.body)))
   todo.completed = !!todo.completed
   await data.set({
     table: 'todos',
@@ -10,7 +10,7 @@ export default async function create(req) {
   return {
     statusCode: 302,
     headers: {
-      'location': '/',
+      location: '/',
       'cache-control': 'no-cache, no-store, must-revalidate, max-age=0, s-maxage=0'
     }
   }
