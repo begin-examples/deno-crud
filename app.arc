@@ -4,7 +4,7 @@ begin-app
 @http
 /todos
   method get
-  src /todos/read/
+  src /todos/read
 
 /todos
   method post
