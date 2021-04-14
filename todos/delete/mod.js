@@ -2,7 +2,7 @@
 import * as data from 'https://registry.begin.com/begin-data@master/mod.ts'
 
 export async function handler(req) {
-  let searchParams = new URLSearchParams(req.body)
+  let searchParams = new URLSearchParams(atob(req.body))
   let key = searchParams.get('key')
   await data.destroy({
     key,
