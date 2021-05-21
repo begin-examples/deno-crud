@@ -1,5 +1,5 @@
 @app
-begin-app
+deno-crud
 
 @http
 /todos
